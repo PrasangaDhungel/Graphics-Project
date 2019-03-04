@@ -10,17 +10,17 @@
 void fillTriangle(float ax, float ay, float ar,float ag,float ab, float bx, float by,float br,float bg,float bb, float cx, float cy,float cr,float cg,float cb){
     float tempx,tempy,tempr,tempg,tempb;
     if(ay==by && by == cy){
-        by += 0.01;
-        cy += 0.02;
+        by += 0.0001;
+        cy += 0.0002;
     }
     if(ay == by){
-        by += 0.001;
+        by += 0.0001;
     }
     if(ay == cy){
-        cy += 0.002;
+        cy += 0.0002;
     }
     if(by == cy){
-        cy += 0.003;
+        cy += 0.0003;
     }
     if(by < ay && by < cy){
         tempx = ax;

@@ -30,7 +30,7 @@ vector
 cmath
 -
 
-/home/prasanga/CLionProjects/GraphicsProject/loader.h
+/home/prasanga/CLionProjects/GraphicsProject/loadfromtxt.h
 headers.h
 /home/prasanga/CLionProjects/GraphicsProject/headers.h
 usage.h
@@ -43,8 +43,8 @@ headers.h
 /home/prasanga/CLionProjects/GraphicsProject/headers.h
 glutfunctions.h
 /home/prasanga/CLionProjects/GraphicsProject/glutfunctions.h
-loader.h
-/home/prasanga/CLionProjects/GraphicsProject/loader.h
+loadfromtxt.h
+/home/prasanga/CLionProjects/GraphicsProject/loadfromtxt.h
 
 /home/prasanga/CLionProjects/GraphicsProject/usage.h
 headers.h

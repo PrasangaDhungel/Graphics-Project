@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(PROJECT_NAME "GraphicsProject")
 
-set(SOURCE_FILES  main.cpp glutfunctions.h algos.h usage.h loader.h headers.h)
+set(SOURCE_FILES  main.cpp glutfunctions.h algos.h usage.h loader.h headers.h loadfromtxt.h)
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 find_package(glfw3 REQUIRED)
 include_directories(${GLFW_INCLUDE_DIRS})

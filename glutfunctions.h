@@ -47,16 +47,16 @@ void processNormalKeys(unsigned char key, int x, int y) {
     if (key == 27)
         exit(0);
     if(key == 'a' || key == 'A'){
-        transx -= 1;
+        transx -= 5;
     }
     if(key == 'd' || key == 'D'){
-        transx += 1;
+        transx += 5;
     }
     if(key == 'w' || key == 'W'){
-        transy += 1;
+        transy += 5;
     }
     if(key == 's' || key == 'S'){
-        transy -= 1;
+        transy -= 5;
     }
     if(key == 'x'){
         anglx += 0.05;

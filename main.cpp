@@ -1,16 +1,17 @@
 #include "headers.h"
 #include "glutfunctions.h"
-#include "loader.h"
+#include "loadfromtxt.h"
 using namespace std;
 
 
 int main(int argc, char** argv) {
-    loadvertices();
-    initWindow(&argc, argv, 0,0,1200,700, "Prasanga");
+    txtloadvertices();
+    initWindow(&argc, argv, startx,starty,screenwidth,screenheight, "Graphics Project");
     glutReshapeFunc(changeSize);
-    glutIdleFunc(loadandrotate);
+    glutDisplayFunc(txtloadandrotate);
     glutKeyboardFunc(processNormalKeys);
     glutSpecialFunc(specialKeyFunction);
     glutMainLoop();
+    exitWindow();
     return 0;
 }

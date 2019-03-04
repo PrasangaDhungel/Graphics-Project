@@ -78,6 +78,9 @@
 		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/loader.h">
 			<Option target="GraphicsProject"/>
 		</Unit>
+		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/loadfromtxt.h">
+			<Option target="GraphicsProject"/>
+		</Unit>
 		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/main.cpp">
 			<Option target="GraphicsProject"/>
 		</Unit>

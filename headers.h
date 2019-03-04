@@ -15,16 +15,26 @@ using namespace std;
 #define rep(i,a,b) for(int i=a; i<b; i++)
 
 typedef std::vector<std::vector<float>  > matrix;
+typedef std::vector<std::vector<int>  > matrixint;
 
-matrix original(4);
+matrix originalVertices(4);
 matrix result(4);
-matrix face(3);
+matrixint face(3);
 matrix normals(3);
 matrix colors(3);
-matrix facenormals(3);
-float anglz = 0, anglx = 0, angly = 0;
+matrix newcolors(3);
+matrixint facenormals(3);
+matrix Ka(3);
+matrix Kd(3);
+matrix Ks(3);
+
+float anglz = 0.7, anglx = 0, angly = 0;
 float transx = 0, transy = 0;
-float scal = 20;
+float scal = 30;
+int screenwidth = 1000;
+int screenheight = 600;
+int startx = 190;
+int starty = 90;
 
 matrix matmultiply(const matrix & a, const matrix & b){
     std::vector<std::vector<float>  > c(a.size());
