@@ -35,7 +35,8 @@ int screenwidth = 1000;
 int screenheight = 600;
 int startx = 190;
 int starty = 90;
-
+int lightmode = 0;
+float Ia = 0.35;
 matrix matmultiply(const matrix & a, const matrix & b){
     std::vector<std::vector<float>  > c(a.size());
     float sum;

@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
     txtloadvertices();
     initWindow(&argc, argv, startx,starty,screenwidth,screenheight, "Graphics Project");
     glutReshapeFunc(changeSize);
-    glutDisplayFunc(txtloadandrotate);
+    glutIdleFunc(txtloadandrotate);
     glutKeyboardFunc(processNormalKeys);
     glutSpecialFunc(specialKeyFunction);
     glutMainLoop();

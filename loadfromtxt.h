@@ -16,11 +16,10 @@ void txtloadvertices(){
     float kar, kag, kab, kdr, kdg, kdb, ksr, ksg, ksb;
     string first, second, third;
     int a, b, c;
-    float p,q,multfactor;
     char filename[] = "try.txt";
     file.open(filename);
     string str;
-    setonVertices(0,-6.5,1);
+    setonVertices(0,-6.5f,1);
     setonnormals(0,0,0);
     setoncolors(1,1,1);
     setonnewcolors(0,0,0);
@@ -29,7 +28,7 @@ void txtloadvertices(){
     setonKs(0,0,0);
     while(!file.eof()){
         getline(file,str);
-        if(str[0] == 'v' && str[1] != 't' && str[1] != 'n'){
+        if(str[0] == 'v'){
             stringstream ss(str);
             ss>>ch>>one>>two>>three>>nx>>ny>>nz>>r>>g>>bl>>kar>>kag>>kab>>kdr>>kdg>>kdb>>ksr>>ksg>>ksb;
             setonVertices(one, two,three);
@@ -47,11 +46,11 @@ void txtloadvertices(){
         }
     }
     file.close();
-
 }
 
-void txtloadandrotate(void) {
+void txtloadandrotate() {
     int ff, fs, ft;
+    float isoangle = M_PI/5.25;
     float p,q,r,multfactor;
     for(int i=0; i<originalVertices[0].size(); i++){
         p = originalVertices[0][0] - originalVertices[0][i];
@@ -59,28 +58,26 @@ void txtloadandrotate(void) {
         r = originalVertices[2][0] - originalVertices[2][i];
         multfactor = (p * normals[0][i] + q * normals[1][i] + r * normals[2][i])/sqrt(p*p + q*q + r*r);
         if(multfactor>0){
-            newcolors[0][i] = 0.1 + colors[0][i] * multfactor;
-            newcolors[1][i] = 0.1 + colors[1][i] * multfactor;
-            newcolors[2][i] = 0.1 + colors[2][i] * multfactor;
+            newcolors[0][i] = (Ka[0][i]*Ia + Kd[0][i] * multfactor) * colors[0][i];
+            newcolors[1][i] = (Ka[1][i]*Ia + Kd[1][i] * multfactor) * colors[1][i];
+            newcolors[2][i] = (Ka[2][i]*Ia + Kd[2][i] * multfactor) * colors[2][i];
         }
         else{
-            newcolors[0][i] = colors[0][i]*0.3;
-            newcolors[1][i] = colors[1][i]* 0.3;
-            newcolors[2][i] = colors[2][i]*0.3;
+            newcolors[0][i] = Ka[0][i]*Ia*colors[0][i];
+            newcolors[1][i] = Ka[1][i]*Ia*colors[1][i];
+            newcolors[2][i] = Ka[2][i]*Ia*colors[2][i];
         }
     }
-
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(-screenwidth/2.0,screenwidth/2.0, -screenheight/2.0,screenheight/2.0);
     glBegin(GL_POINTS);
-
     matrix rmz = {{cos(anglz),-sin(anglz),0,0},{sin(anglz),cos(anglz),0,0},{0,0,1,0},{0,0,0,1}};
     matrix rmx = {{1,0,0,0},{0,cos(anglx),-sin(anglx),0},{0,sin(anglx),cos(anglx),0},{0,0,0,1}};
     matrix rmy = {{cos(angly),0,sin(angly),0},{0,1,0,0},{-sin(angly),0,cos(angly),0},{0,0,0,1}};
     matrix rm1 = matmultiply(rmy, matmultiply(rmx, rmz));
-    matrix tm1 = {{cos(M_PI/5.25), -cos(M_PI/5.25), 0,0}, {sin(M_PI/5.25),sin(M_PI/5.25),1,0},{0,0,1,0},{0,0,0,1}};
+    matrix tm1 = {{cos(isoangle), -cos(isoangle), 0,0}, {sin(isoangle),sin(isoangle),1,0},{0,0,1,0},{0,0,0,1}};
     matrix sc1 = {{scal,0,0,0}, {0,scal,0,0},{0,0,scal,0},{0,0,0,1}};
     matrix cm = matmultiply(tm1, matmultiply(sc1, rm1));
     result = matmultiply(cm, originalVertices);
@@ -93,6 +90,5 @@ void txtloadandrotate(void) {
     glEnd();
     glutSwapBuffers();
 }
-
 
 #endif //GRAPHICSPROJECT_LOADFROMTXT_H
