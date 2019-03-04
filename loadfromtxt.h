@@ -17,7 +17,7 @@ void txtloadvertices(){
     string first, second, third;
     int a, b, c;
     float p,q,multfactor;
-    char filename[] = "try1.txt";
+    char filename[] = "try.txt";
     file.open(filename);
     string str;
     setonVertices(0,-6.5,1);
