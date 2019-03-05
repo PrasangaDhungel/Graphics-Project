@@ -9,17 +9,16 @@
 #include "usage.h"
 #include "algos.h"
 
-void txtloadvertices(){
+void loadVertices(){
     ifstream file;
     char ch;
     float one, two, three,nx,ny,nz, r=0.4, g=0.4, bl=0.4;
     float kar, kag, kab, kdr, kdg, kdb, ksr, ksg, ksb;
     string first, second, third;
     int a, b, c;
-    char filename[] = "object.txt";
     file.open(filename);
     string str;
-    setonVertices(0,-6.5f,4);
+    setonVertices(0,-6,10);
     setonnormals(0,0,0);
     setoncolors(1,1,1);
     setonnewcolors(0,0,0);
@@ -48,9 +47,9 @@ void txtloadvertices(){
     file.close();
 }
 
-void txtloadandrotate() {
+void Render() {
     int ff, fs, ft;
-    float p,q,r,multfactor,attenuation,spec,d=1,rx,ry,rz,specmult,Ns=51;
+    float p,q,r,multfactor,attenuation,spec,d=1,rx,ry,rz,specmult,Ns=51,lx,ly;
     for(int i=0; i<originalVertices[0].size(); i++){
         p = originalVertices[0][0] - originalVertices[0][i];
         q = originalVertices[1][0] - originalVertices[1][i];
@@ -74,9 +73,9 @@ void txtloadandrotate() {
             newcolors[2][i] = Ka[2][i]*Ia*colors[2][i];
         }
         if(spec != 0){
-            newcolors[0][i] += Ks[0][i]*Id*spec*0.15;
-            newcolors[1][i] += Ks[1][i]*Id*spec*0.15;
-            newcolors[2][i] += Ks[2][i]*Id*spec*0.15;
+            newcolors[0][i] += Ks[0][i]*Id*spec*0.1;
+            newcolors[1][i] += Ks[1][i]*Id*spec*0.1;
+            newcolors[2][i] += Ks[2][i]*Id*spec*0.1;
 
         }
     }

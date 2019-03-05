@@ -13,6 +13,8 @@
 #include <cmath>
 #include <map>
 #include <utility>
+#include <cstring>
+
 using namespace std;
 #define rep(i,a,b) for(int i=a; i<b; i++)
 
@@ -30,21 +32,42 @@ matrix Ka(3);
 matrix Kd(3);
 matrix Ks(3);
 
-float anglz = 0.8f, anglx = -0.15, angly = 0.15;
-float transx = 0, transy = 0;
-float scal = 7;
-int screenwidth = 1000;
+char filename[] = "try.txt";
+float anglz, anglx, angly, transx, transy, scal,lightangle;
+int screenwidth = 1200;
 int screenheight = 600;
-int startx = 190;
+int startx = 90;
 int starty = 90;
 int lightmode = 0;
 float Ia = 0.35, Id = 1.0;
-float isoangle = M_PI/5.25;
+float isoangle = M_PI / 5.25;
+float lightinitx, lightinity, lightinitz;
 
+void globalVariablesInitializer() {
+    if(strcmp(filename, "object.txt")==0) {
+        anglz = -0.85f;
+        anglx = 0;
+        angly = 0;
+        transx = 0;
+        transy = 0;
+        scal = 7;
+        lightangle = 2;
+    }
+    else if(strcmp(filename, "try.txt")==0){
+        anglz = 0.85f;
+        anglx = 0;
+        angly = 0;
+        transx = 0;
+        transy = 0;
+        scal = 40;
+        lightangle = 2;
+    }
+}
 void logstates(){
     cout<<"Anglz: "<<anglz<<" "<<"Angley: "<<angly<<" "<<"Anglex: "<<anglx<<endl;
     cout<<"Scal: "<<scal<<endl;
     cout<<"LightSource: "<<originalVertices[0][0]<<" "<<originalVertices[1][0]<<" "<<originalVertices[2][0]<<endl;
+    cout<<"Lightangle: "<<lightangle<<endl;
 }
 
 map<pair<int, int>,  float> depthbuf;

@@ -33,22 +33,24 @@ map
 -
 utility
 -
-
-/home/prasanga/CLionProjects/GraphicsProject/loadfromtxt.h
-headers.h
-/home/prasanga/CLionProjects/GraphicsProject/headers.h
-usage.h
-/home/prasanga/CLionProjects/GraphicsProject/usage.h
-algos.h
-/home/prasanga/CLionProjects/GraphicsProject/algos.h
+cstring
+-
 
 /home/prasanga/CLionProjects/GraphicsProject/main.cpp
 headers.h
 /home/prasanga/CLionProjects/GraphicsProject/headers.h
 glutfunctions.h
 /home/prasanga/CLionProjects/GraphicsProject/glutfunctions.h
-loadfromtxt.h
-/home/prasanga/CLionProjects/GraphicsProject/loadfromtxt.h
+renderer.h
+/home/prasanga/CLionProjects/GraphicsProject/renderer.h
+
+/home/prasanga/CLionProjects/GraphicsProject/renderer.h
+headers.h
+/home/prasanga/CLionProjects/GraphicsProject/headers.h
+usage.h
+/home/prasanga/CLionProjects/GraphicsProject/usage.h
+algos.h
+/home/prasanga/CLionProjects/GraphicsProject/algos.h
 
 /home/prasanga/CLionProjects/GraphicsProject/usage.h
 headers.h

@@ -4,7 +4,7 @@
 CMakeFiles/GraphicsProject.dir/main.cpp.o: algos.h
 CMakeFiles/GraphicsProject.dir/main.cpp.o: glutfunctions.h
 CMakeFiles/GraphicsProject.dir/main.cpp.o: headers.h
-CMakeFiles/GraphicsProject.dir/main.cpp.o: loadfromtxt.h
 CMakeFiles/GraphicsProject.dir/main.cpp.o: main.cpp
+CMakeFiles/GraphicsProject.dir/main.cpp.o: renderer.h
 CMakeFiles/GraphicsProject.dir/main.cpp.o: usage.h
 

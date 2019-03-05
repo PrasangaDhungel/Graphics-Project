@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(PROJECT_NAME "GraphicsProject")
 
-set(SOURCE_FILES  main.cpp glutfunctions.h algos.h usage.h  headers.h loadfromtxt.h)
+set(SOURCE_FILES  main.cpp glutfunctions.h algos.h usage.h  headers.h renderer.h)
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 find_package(OpenGL REQUIRED)

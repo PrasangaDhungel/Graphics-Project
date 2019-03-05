@@ -75,10 +75,10 @@
 		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/headers.h">
 			<Option target="GraphicsProject"/>
 		</Unit>
-		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/loadfromtxt.h">
+		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/main.cpp">
 			<Option target="GraphicsProject"/>
 		</Unit>
-		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/main.cpp">
+		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/renderer.h">
 			<Option target="GraphicsProject"/>
 		</Unit>
 		<Unit filename="/home/prasanga/CLionProjects/GraphicsProject/usage.h">
