@@ -16,7 +16,7 @@ void txtloadvertices(){
     float kar, kag, kab, kdr, kdg, kdb, ksr, ksg, ksb;
     string first, second, third;
     int a, b, c;
-    char filename[] = "try.txt";
+    char filename[] = "object.txt";
     file.open(filename);
     string str;
     setonVertices(0,-6.5f,4);
@@ -73,12 +73,12 @@ void txtloadandrotate() {
             newcolors[1][i] = Ka[1][i]*Ia*colors[1][i];
             newcolors[2][i] = Ka[2][i]*Ia*colors[2][i];
         }
-//        if(spec != 0){
-//            newcolors[0][i] += Ks[0][i]*Id*spec*0.25;
-//            newcolors[1][i] += Ks[1][i]*Id*spec*0.25;
-//            newcolors[2][i] += Ks[2][i]*Id*spec*0.25;
-//
-//        }
+        if(spec != 0){
+            newcolors[0][i] += Ks[0][i]*Id*spec*0.15;
+            newcolors[1][i] += Ks[1][i]*Id*spec*0.15;
+            newcolors[2][i] += Ks[2][i]*Id*spec*0.15;
+
+        }
     }
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);

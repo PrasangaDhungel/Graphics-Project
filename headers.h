@@ -32,7 +32,7 @@ matrix Ks(3);
 
 float anglz = 0.8f, anglx = -0.15, angly = 0.15;
 float transx = 0, transy = 0;
-float scal = 45;
+float scal = 7;
 int screenwidth = 1000;
 int screenheight = 600;
 int startx = 190;
