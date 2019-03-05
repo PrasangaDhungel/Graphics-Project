@@ -91,17 +91,21 @@ void processNormalKeys(unsigned char key, int x, int y) {
     else if(key == 'I'){
         Ia -= 0.02;
     }
+    logstates();
 }
 
 void specialKeyFunction(int key, int x, int y) {
-    if ( key == GLUT_KEY_LEFT )
+    if ( key == GLUT_KEY_LEFT ) {
         anglz -= 0.05;
-    else if ( key == GLUT_KEY_RIGHT )
+    }
+    else if ( key == GLUT_KEY_RIGHT ) {
         anglz += 0.05;
+    }
     else if ( key == GLUT_KEY_DOWN)
         scal -= 0.2;
     else if ( key == GLUT_KEY_UP )
         scal += 0.2;
+    logstates();
     glutPostRedisplay();
 }
 

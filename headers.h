@@ -11,6 +11,8 @@
 #include <sstream>
 #include <vector>
 #include <cmath>
+#include <map>
+#include <utility>
 using namespace std;
 #define rep(i,a,b) for(int i=a; i<b; i++)
 
@@ -28,15 +30,24 @@ matrix Ka(3);
 matrix Kd(3);
 matrix Ks(3);
 
-float anglz = 0.7, anglx = 0, angly = 0;
+float anglz = 0.8f, anglx = -0.15, angly = 0.15;
 float transx = 0, transy = 0;
-float scal = 30;
+float scal = 45;
 int screenwidth = 1000;
 int screenheight = 600;
 int startx = 190;
 int starty = 90;
 int lightmode = 0;
-float Ia = 0.35;
+float Ia = 0.35, Id = 1.0;
+float isoangle = M_PI/5.25;
+
+void logstates(){
+    cout<<"Anglz: "<<anglz<<" "<<"Angley: "<<angly<<" "<<"Anglex: "<<anglx<<endl;
+    cout<<"Scal: "<<scal<<endl;
+    cout<<"LightSource: "<<originalVertices[0][0]<<" "<<originalVertices[1][0]<<" "<<originalVertices[2][0]<<endl;
+}
+
+map<pair<int, int>,  float> depthbuf;
 matrix matmultiply(const matrix & a, const matrix & b){
     std::vector<std::vector<float>  > c(a.size());
     float sum;

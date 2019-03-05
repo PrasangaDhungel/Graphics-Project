@@ -19,7 +19,7 @@ void txtloadvertices(){
     char filename[] = "try.txt";
     file.open(filename);
     string str;
-    setonVertices(0,-6.5f,1);
+    setonVertices(0,-6.5f,4);
     setonnormals(0,0,0);
     setoncolors(1,1,1);
     setonnewcolors(0,0,0);
@@ -50,23 +50,35 @@ void txtloadvertices(){
 
 void txtloadandrotate() {
     int ff, fs, ft;
-    float isoangle = M_PI/5.25;
-    float p,q,r,multfactor;
+    float p,q,r,multfactor,attenuation,spec,d=1,rx,ry,rz,specmult,Ns=51;
     for(int i=0; i<originalVertices[0].size(); i++){
         p = originalVertices[0][0] - originalVertices[0][i];
         q = originalVertices[1][0] - originalVertices[1][i];
         r = originalVertices[2][0] - originalVertices[2][i];
-        multfactor = (p * normals[0][i] + q * normals[1][i] + r * normals[2][i])/sqrt(p*p + q*q + r*r);
+        attenuation = p*p + q*q +r*r;
+        multfactor = (p * normals[0][i] + q * normals[1][i] + r * normals[2][i])/sqrt(attenuation);
+        specmult = 2 * (p * normals[0][i] + q * normals[1][i] + r * normals[2][i]);
+        rx = specmult * normals[0][i] - p;
+        ry = specmult * normals[1][i] - q;
+//        rz = specmult * normals[2][i] - r;
+        spec = -(rx + ry)/sqrt(2 * (rx*rx +ry*ry));
+        spec = pow(spec, Ns);
         if(multfactor>0){
-            newcolors[0][i] = (Ka[0][i]*Ia + Kd[0][i] * multfactor) * colors[0][i];
-            newcolors[1][i] = (Ka[1][i]*Ia + Kd[1][i] * multfactor) * colors[1][i];
-            newcolors[2][i] = (Ka[2][i]*Ia + Kd[2][i] * multfactor) * colors[2][i];
+            newcolors[0][i] = (Ka[0][i]*Ia + Kd[0][i] * multfactor *Id/(1+d*d)) * colors[0][i];
+            newcolors[1][i] = (Ka[1][i]*Ia + Kd[1][i] * multfactor *Id/(1+d*d)) * colors[1][i];
+            newcolors[2][i] = (Ka[2][i]*Ia + Kd[2][i] * multfactor *Id/(1+d*d)) * colors[2][i];
         }
         else{
             newcolors[0][i] = Ka[0][i]*Ia*colors[0][i];
             newcolors[1][i] = Ka[1][i]*Ia*colors[1][i];
             newcolors[2][i] = Ka[2][i]*Ia*colors[2][i];
         }
+//        if(spec != 0){
+//            newcolors[0][i] += Ks[0][i]*Id*spec*0.25;
+//            newcolors[1][i] += Ks[1][i]*Id*spec*0.25;
+//            newcolors[2][i] += Ks[2][i]*Id*spec*0.25;
+//
+//        }
     }
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
@@ -77,16 +89,16 @@ void txtloadandrotate() {
     matrix rmx = {{1,0,0,0},{0,cos(anglx),-sin(anglx),0},{0,sin(anglx),cos(anglx),0},{0,0,0,1}};
     matrix rmy = {{cos(angly),0,sin(angly),0},{0,1,0,0},{-sin(angly),0,cos(angly),0},{0,0,0,1}};
     matrix rm1 = matmultiply(rmy, matmultiply(rmx, rmz));
-    matrix tm1 = {{cos(isoangle), -cos(isoangle), 0,0}, {sin(isoangle),sin(isoangle),1,0},{0,0,1,0},{0,0,0,1}};
     matrix sc1 = {{scal,0,0,0}, {0,scal,0,0},{0,0,scal,0},{0,0,0,1}};
-    matrix cm = matmultiply(tm1, matmultiply(sc1, rm1));
+    matrix cm =  matmultiply(sc1, rm1);
     result = matmultiply(cm, originalVertices);
     for(int i=0; i<face[0].size(); i++){
         ff = face[0][i];
         fs = face[1][i];
         ft = face[2][i];
-        fillTriangle(result[0][ff]+transx, result[1][ff]+transy,newcolors[0][ff],newcolors[1][ff],newcolors[2][ff], result[0][fs]+transx, result[1][fs]+transy,newcolors[0][fs],newcolors[1][fs],newcolors[2][fs],result[0][ft]+transx, result[1][ft]+transy,newcolors[0][ft],newcolors[1][ft],newcolors[2][ft]);
+        fillTriangle(result[0][ff], result[1][ff], result[2][ff],  newcolors[0][ff],newcolors[1][ff],newcolors[2][ff], result[0][fs], result[1][fs],result[2][fs], newcolors[0][fs],newcolors[1][fs],newcolors[2][fs],result[0][ft], result[1][ft],result[2][ft], newcolors[0][ft],newcolors[1][ft],newcolors[2][ft]);
     }
+    depthbuf.clear();
     glEnd();
     glutSwapBuffers();
 }
