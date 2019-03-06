@@ -31,8 +31,8 @@ matrixint facenormals(3);
 matrix Ka(3);
 matrix Kd(3);
 matrix Ks(3);
-
-char filename[] = "try.txt";
+//matrix projectionMatrix = {};
+char filename[] = "object.txt";
 float anglz, anglx, angly, transx, transy, scal,lightangle;
 int screenwidth = 1200;
 int screenheight = 600;
@@ -46,21 +46,28 @@ float lightinitx, lightinity, lightinitz;
 void globalVariablesInitializer() {
     if(strcmp(filename, "object.txt")==0) {
         anglz = -0.85f;
-        anglx = 0;
-        angly = 0;
+        anglx = -0.3;
+        angly = 0.35;
         transx = 0;
         transy = 0;
         scal = 7;
         lightangle = 2;
+        lightinitx = 120;
+        lightinity = 0;
+        lightinitz = 20;
     }
     else if(strcmp(filename, "try.txt")==0){
-        anglz = 0.85f;
+        anglz = 0.9f;
         anglx = 0;
         angly = 0;
         transx = 0;
         transy = 0;
         scal = 40;
         lightangle = 2;
+        lightangle = 2;
+        lightinitx = -15;
+        lightinity = -42;
+        lightinitz = 18.5;
     }
 }
 void logstates(){
@@ -68,6 +75,7 @@ void logstates(){
     cout<<"Scal: "<<scal<<endl;
     cout<<"LightSource: "<<originalVertices[0][0]<<" "<<originalVertices[1][0]<<" "<<originalVertices[2][0]<<endl;
     cout<<"Lightangle: "<<lightangle<<endl;
+    cout<<"Light Intensities: "<<Ia<<" "<<Id<<endl;
 }
 
 map<pair<int, int>,  float> depthbuf;

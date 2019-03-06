@@ -18,7 +18,7 @@ void loadVertices(){
     int a, b, c;
     file.open(filename);
     string str;
-    setonVertices(0,-6,10);
+    setonVertices(lightinitx,lightinity,lightinitz);
     setonnormals(0,0,0);
     setoncolors(1,1,1);
     setonnewcolors(0,0,0);
@@ -49,7 +49,7 @@ void loadVertices(){
 
 void Render() {
     int ff, fs, ft;
-    float p,q,r,multfactor,attenuation,spec,d=1,rx,ry,rz,specmult,Ns=51,lx,ly;
+    float p,q,r,multfactor,attenuation,spec,d=1,rx,ry,specmult,Ns=97;
     for(int i=0; i<originalVertices[0].size(); i++){
         p = originalVertices[0][0] - originalVertices[0][i];
         q = originalVertices[1][0] - originalVertices[1][i];
@@ -59,7 +59,6 @@ void Render() {
         specmult = 2 * (p * normals[0][i] + q * normals[1][i] + r * normals[2][i]);
         rx = specmult * normals[0][i] - p;
         ry = specmult * normals[1][i] - q;
-//        rz = specmult * normals[2][i] - r;
         spec = -(rx + ry)/sqrt(2 * (rx*rx +ry*ry));
         spec = pow(spec, Ns);
         if(multfactor>0){

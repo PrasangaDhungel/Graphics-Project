@@ -80,16 +80,15 @@ void processNormalKeys(unsigned char key, int x, int y) {
         originalVertices[2][0] += 0.5;
     }
     else if(key == 'r'){
-        lightangle += 0.005;
+        lightangle += 0.0001;
         float lx, ly;
         lx = originalVertices[0][0] * cos(lightangle) - sin(lightangle) * originalVertices[1][0];
         ly = originalVertices[0][0] * sin(lightangle) + cos(lightangle) * originalVertices[1][0];
         originalVertices[0][0] = lx;
         originalVertices[1][0] = ly;
-
     }
     else if(key == 'R'){
-        lightangle -= 0.005;
+        lightangle -= 0.0001;
         float lx, ly;
         lx = originalVertices[0][0] * cos(lightangle) - sin(lightangle) * originalVertices[1][0];
         ly = originalVertices[0][0] * sin(lightangle) + cos(lightangle) * originalVertices[1][0];
@@ -105,8 +104,14 @@ void processNormalKeys(unsigned char key, int x, int y) {
     else if(key == 'i'){
         Ia += 0.02;
     }
+    else if(key == 'm'){
+        Id += 0.02;
+    }
     else if(key == 'I'){
         Ia -= 0.02;
+    }
+    else if(key == 'I'){
+        Id -= 0.02;
     }
     logstates();
 }
