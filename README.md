@@ -17,6 +17,11 @@ Renders Human Head.
 * Visible Surface Detection Algorithm
 * 3D transformations
 
+### Build:
+```g++ main.cpp -o GraphicsProject -lglut -lGLU -lGL; ./GraphicsProject```<br>
+**OR**<br>
+```make; ./GraphicsProject```
+
 ### Demo
 [Demo](https://www.youtube.com/watch?v=Bom_wCFt_CQ)
 
