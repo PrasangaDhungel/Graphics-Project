@@ -110,7 +110,7 @@ void processNormalKeys(unsigned char key, int x, int y) {
     else if(key == 'I'){
         Ia -= 0.02;
     }
-    else if(key == 'I'){
+    else if(key == 'M'){
         Id -= 0.02;
     }
     logstates();
