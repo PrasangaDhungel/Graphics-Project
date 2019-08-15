@@ -18,20 +18,7 @@ void fillTriangle(float axo, float ay, float az, float ar,float ag,float ab, flo
     by = sin(isoangle) * (bxo + by) + bz + transy;
     float cx = cos(isoangle) *(cxo - cy) + transx;
     cy = sin(isoangle) * (cxo + cy) + cz + transy;
-    if(ay==by && by == cy){
-        by += 0.00001;
-        cy += 0.00002;
-    }
-    if(ay == by){
-        by += 0.00001;
-    }
-    if(ay == cy){
-        cy += 0.00002;
-    }
-    if(by == cy){
-        cy += 0.0002;
-    }
-    if(by < ay && by < cy){
+	if(by < ay && by < cy){
         tempx = ax;
         tempy = ay;
         tempr = ar;
@@ -137,6 +124,7 @@ void fillTriangle(float axo, float ay, float az, float ar,float ag,float ab, flo
             cdepth = tempdepth;
         }
     }
+
     float px,py,pr,pb,pg,pdepth,  dx1, dx2, dx3,dr1,dr2,dr3,dg1,dg2,dg3,db1,db2,db3,ddepth1, ddepth2, ddepth3,sx,sy,sr,sg,sb,sdepth,ex,ey,er,eg,eb,edepth, db,dg,dr, ddepth;
     if (by-ay > 0) {
         dx1=(bx-ax)/(by-ay);
